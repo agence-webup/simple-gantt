@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Simple Gantt</title>
+    <link rel="stylesheet" href="simple-gantt.css">
+    <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+        "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    </style>
+</head>
+<body>
+    <section id="gantt"></section>
+
+    <script src="simple-gantt.js"></script>
+
+    <script>
+    var events = [{
+        name: "Ressource 1",
+        events: [{
+            id : 1,
+            start : "10:00",
+            end : "12:00",
+            label: "Event 1",
+            color: "#42a5f5"
+        }, {
+            id : 2,
+            start : "14:00",
+            end : "15:00",
+            label: "Event 2",
+            color: "#66bb6a"
+        }]
+    }, {
+        name: "Ressource 2",
+        events: [{
+            id : 3,
+            start : "15:00",
+            end : "16:00",
+            label: "Event 3",
+            color: "#ffca28"
+        }, {
+            id : 4,
+            start : "12:30",
+            end : "13:30",
+            label: "Event 4",
+            color: "#ef5350"
+        }]
+    },{
+        name: "Ressource 3",
+        events: [{
+            id : 3,
+            start : "15:30",
+            end : "16:40",
+            label: "Event 5",
+            color: "#26a69a"
+        }, {
+            id : 4,
+            start : "12:30",
+            end : "13:30",
+            label: "Event 6",
+            color: "#42a5f5"
+        }]
+    }, {
+        name: "Ressource 4",
+        events: [{
+            id : 3,
+            start : "15:00",
+            end : "16:40",
+            label: "Event très long",
+            color: "#ef5350"
+        }, {
+            id : 3,
+            start : "17:00",
+            end : "19:00",
+            label: "Event 6",
+            color: "#ef5350"
+        }, {
+            id : 4,
+            start : "11:30",
+            end : "13:30",
+            label: "Event 7",
+            color: "#66bb6a"
+        }]
+    }];
+
+    let options = {
+        start: 6,
+        end: 21,
+        onClick: function(event) {
+            alert(event.label);
+        }
+    }
+
+    var gantt = new SimpleGantt('gantt', events, options);
+
+    </script>
+</body>
+</html>

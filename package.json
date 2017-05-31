@@ -1,0 +1,44 @@
+{
+    "name": "simple-gantt",
+    "version": "0.1.1",
+    "description": "",
+    "main": "dist/simple-gantt.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/agence-webup/simple-gantt.git"
+    },
+    "author": "parisi.robin@gmail.com",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/agence-webup/simple-gantt/issues"
+    },
+    "homepage": "https://github.com/agence-webup/simple-gantt#readme",
+    "devDependencies": {
+        "babel-preset-es2015": "^6.16.0",
+        "babelify": "^7.3.0",
+        "browser-sync": "^2.17.3",
+        "browserify": "^14.1.0",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.1",
+        "gulp-babel": "^6.1.2",
+        "gulp-clean-css": "^2.0.13",
+        "gulp-gh-pages": "^0.5.4",
+        "gulp-sourcemaps": "^2.4.1",
+        "gulp-uglify": "^2.0.0",
+        "vinyl-source-stream": "^1.1.0"
+    },
+    "dependencies": {
+        "express": "^4.15.2",
+        "formidable": "^1.1.1"
+    },
+    "keywords": [
+        "uploader"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node demo/server.js & gulp watch"
+    }
+}
