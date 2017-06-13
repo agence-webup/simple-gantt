@@ -56,6 +56,7 @@ Set options:
 let options = {
     start: 6,
     end: 21,
+    legend: true,
     onClick: function(event) {
         alert(event.label);
     }

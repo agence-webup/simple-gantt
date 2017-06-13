@@ -10,7 +10,14 @@ var SimpleGantt = function () {
         _classCallCheck(this, SimpleGantt);
 
         this.events = events;
-        this.options = options;
+
+        this.options = {
+            start: options.start,
+            end: options.end,
+            legend: options.legend !== undefined ? options.legend : true,
+            onClick: typeof options.onClick !== "function" ? options.onClick : null
+        };
+
         this.ui = {
             base: document.querySelector('#' + target)
         };
@@ -19,7 +26,7 @@ var SimpleGantt = function () {
     }
 
     _createClass(SimpleGantt, [{
-        key: '_buildBase',
+        key: "_buildBase",
         value: function _buildBase() {
             var _this = this;
 
@@ -45,7 +52,10 @@ var SimpleGantt = function () {
                 _this.ui.legend.appendChild(_this.ui.events[index]);
             });
 
-            this.ui.base.appendChild(this.ui.legend);
+            // display legend or not
+            if (this.options.legend) {
+                this.ui.base.appendChild(this.ui.legend);
+            }
 
             // main
             this.ui.main = document.createElement('div');
@@ -65,7 +75,7 @@ var SimpleGantt = function () {
             this.ui.base.appendChild(this.ui.main);
         }
     }, {
-        key: '_buildEvents',
+        key: "_buildEvents",
         value: function _buildEvents() {
             var _this2 = this;
 
@@ -102,7 +112,7 @@ var SimpleGantt = function () {
             });
         }
     }, {
-        key: '_calculateEventWidth',
+        key: "_calculateEventWidth",
         value: function _calculateEventWidth(event) {
             var total = this.options.end - this.options.start + 1;
 
@@ -130,13 +140,13 @@ var SimpleGantt = function () {
             return decimalValue * 100 / total + '%';
         }
     }, {
-        key: '_calculateEventOffset',
+        key: "_calculateEventOffset",
         value: function _calculateEventOffset(event) {
             var decimalStart = this._timeToDecimal(event.start);
             return (decimalStart - this.options.start) * 100 / (this.options.end - this.options.start + 1) + '%';
         }
     }, {
-        key: '_timeToDecimal',
+        key: "_timeToDecimal",
         value: function _timeToDecimal(time) {
             var splitedTime = time.split(':');
             var decimalValue = splitedTime[1] * 100 / 60 / 100;

@@ -4,7 +4,14 @@ class SimpleGantt {
 
     constructor(target, events, options) {
         this.events = events;
-        this.options = options;
+
+        this.options = {
+            start: options.start,
+            end: options.end,
+            legend: (options.legend !== undefined) ? options.legend : true,
+            onClick: (typeof options.onClick !== "function") ? options.onClick : null
+        };
+
         this.ui = {
             base: document.querySelector('#' + target)
         }
@@ -35,7 +42,10 @@ class SimpleGantt {
             this.ui.legend.appendChild(this.ui.events[index]);
         });
 
-        this.ui.base.appendChild(this.ui.legend);
+        // display legend or not
+        if(this.options.legend) {
+            this.ui.base.appendChild(this.ui.legend);
+        }
 
         // main
         this.ui.main = document.createElement('div');
