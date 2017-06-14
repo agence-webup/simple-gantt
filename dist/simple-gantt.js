@@ -15,7 +15,7 @@ var SimpleGantt = function () {
             start: options.start,
             end: options.end,
             legend: options.legend !== undefined ? options.legend : true,
-            onClick: typeof options.onClick !== "function" ? options.onClick : null
+            onClick: typeof options.onClick !== "function" ? null : options.onClick
         };
 
         this.ui = {
@@ -94,11 +94,14 @@ var SimpleGantt = function () {
                     item.innerHTML = event.label;
 
                     // attach callback
-                    item.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        _this2.options.onClick(event);
-                    });
+                    if (_this2.options.onClick) {
+                        item.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            _this2.options.onClick(event);
+                        });
+                    }
+
                     line.appendChild(item);
                 });
 

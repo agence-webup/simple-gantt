@@ -9,7 +9,7 @@ class SimpleGantt {
             start: options.start,
             end: options.end,
             legend: (options.legend !== undefined) ? options.legend : true,
-            onClick: (typeof options.onClick !== "function") ? options.onClick : null
+            onClick: (typeof options.onClick !== "function") ?  null : options.onClick
         };
 
         this.ui = {
@@ -83,11 +83,14 @@ class SimpleGantt {
                 item.innerHTML = event.label;
 
                 // attach callback
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.options.onClick(event);
-                });
+                if(this.options.onClick) {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.options.onClick(event);
+                    });
+                }
+                
                 line.appendChild(item);
             })
 
